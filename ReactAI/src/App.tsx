@@ -1,10 +1,7 @@
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
 
 function App() {
-  return (
-    <>
-      <h1 className="text-4xl font-bold text-blue-500">React AI </h1>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
-
 export default App;
