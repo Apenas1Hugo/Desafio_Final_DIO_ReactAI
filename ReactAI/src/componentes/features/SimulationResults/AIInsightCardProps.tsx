@@ -42,7 +42,7 @@ export function AIInsightsCard({ simulationId }: AIInsightCardProps) {
           onRetry={() => fetchInsight(simulationId)}
         />
       )}
-      {!isLoading && insight && <Content/>}
+      {!isLoading && insight && <Content insight={insight} />}
     </div>
   )
 }
