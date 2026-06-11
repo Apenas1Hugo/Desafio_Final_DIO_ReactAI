@@ -1,18 +1,18 @@
-import { AIInsightsCard } from '@/componentes/features/SimulationResults/AIInsightCardProps';
-import { Card } from '@/componentes/features/SimulationResults/Card';
-import { PageHero } from '@/componentes/shared/PageHero';
-import { useSimulationStorage } from '@/hooks/useSimulationStorage';
-import { calcMonthlySavings } from '@/utils/simulation';
-import { CalendarClock, CreditCardIcon, Goal, Landmark, PiggyBank, Wallet } from 'lucide-react';
+import { AIInsightsCard } from '@/componentes/features/SimulationResults/AIInsightCardProps'; // Importa o componente para exibir os insights gerados pela IA com base nos dados da simulação
+import { Card } from '@/componentes/features/SimulationResults/Card'; // Importa o componente para exibir os cartões de informações financeiras
+import { PageHero } from '@/componentes/shared/PageHero'; // Importa o componente para exibir o título e subtítulo da página
+import { useSimulationStorage } from '@/hooks/useSimulationStorage'; // Importa o hook para acessar os dados da simulação
+import { calcMonthlySavings } from '@/utils/simulation'; // Importa a função para calcular a economia mensal necessária
+import { CalendarClock, CreditCardIcon, Goal, Landmark, PiggyBank, Wallet } from 'lucide-react'; 
 import { useParams } from 'react-router-dom';
 
 
 
 export function SimulationResultsPage() {
   const { id } = useParams<{ id: string }>()
-  const { getFormData } = useSimulationStorage()
+  const { getFormData } = useSimulationStorage() // Usa o hook para acessar a função que recupera os dados da simulação
   
-  const data = id ? getFormData(id) : null;
+  const data = id ? getFormData(id) : null; // Recupera os dados da simulação usando o ID da URL
 
   if (!data) {
     return <p>Simulação não encontrada.</p>;

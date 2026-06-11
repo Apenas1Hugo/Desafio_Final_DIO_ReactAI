@@ -7,9 +7,11 @@ import {
   Wallet,
 } from 'lucide-react'
 
-import type { FormStepProps } from '../componentes/features/Simulation/FormStep'
-import type { InsightData } from '@/services/aiService'
+import type { FormStepProps } from '../componentes/features/Simulation/FormStep' // Importa o tipo de propriedades para os passos do formulário de simulação
+import type { InsightData } from '@/services/aiService' // Importa o tipo de dados para os insights gerados pela IA com base nos dados da simulação
 
+
+// Define os passos do formulário de simulação, cada um com um ícone, título, pergunta e propriedades de entrada específicas para coletar os dados necessários para a simulação financeira 
 export const simulationFormSteps = [
   {
     id: 'income',
@@ -87,11 +89,12 @@ export const simulationFormSteps = [
   },
 ]satisfies FormStepProps[]
 
+
 export type SimulationFormData = Record<
   (typeof simulationFormSteps)[number]['id'],
   string
 >
-
+// Define o formato dos dados do formulário de simulação, onde cada campo corresponde a um dos passos do formulário e é do tipo string
 export type SimulationRecord = SimulationFormData & {
   id: string
   insight?: InsightData
