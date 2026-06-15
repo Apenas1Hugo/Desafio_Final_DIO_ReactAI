@@ -3,7 +3,11 @@ import { PageHero } from '../componentes/shared/PageHero';
 import { Divider } from '../componentes/shared/Divider';
 import { Trash2, Goal, ExternalLink } from 'lucide-react';
 
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+
 export function SimulationHistoryPage() {
+  const isMobile = useMediaQuery('(max-width: 640px)');
+
   return (
     <main className="mx-auto max-w-xl px-4 py-10 sm:py-14 ">
       <PageHero
@@ -13,16 +17,17 @@ export function SimulationHistoryPage() {
 
       <div
         className="
-        border-border bg-card flex
-        min-h-[104px]
+        border-border bg-card shadow-black-20
+        flex
+        
         w-full
         flex-col
-        items-center
+        items-start
         justify-between
         gap-6
-        rounded-[22px]
-        border p-8
-        shadow-sm
+        rounded-[22px] border
+        p-8
+        shadow-2xl
         lg:flex-row
       "
       >
@@ -53,11 +58,19 @@ export function SimulationHistoryPage() {
           gap-6
           md:flex-row md:gap-10
         "
-        >
-          //criar retorno
+        ></div>
+        <div className="w:full flex flex-col items-center lg:items-start">
+          <Divider orientation="horizontal" className={isMobile ? '' : 'hidden'} />
+          <div className="flex">
+            <Button variant="ghost">
+              <Trash2 className="text-red-600" />
+            </Button>
+            <Divider orientation="vertical" />
+            <Button variant="secondary">
+              <ExternalLink /> Ver detalhes
+            </Button>
+          </div>
         </div>
-        <Divider orientation="vertical" />
-        
       </div>
     </main>
   );
