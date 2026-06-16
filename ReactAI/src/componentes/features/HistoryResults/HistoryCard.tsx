@@ -1,0 +1,62 @@
+import { Trash2, Goal, ExternalLink } from 'lucide-react';
+
+import { HistoryInfos } from './HistoryInfos';
+import { Button } from '@/componentes/shared/Button';
+import { Divider } from '@/componentes/shared/Divider';
+
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+
+export function HistoryCard() {
+  const isMobile = useMediaQuery('(max-width: 640px)');
+
+  return (
+    <div
+      className="
+    border-border bg-card shadow-black-20
+    flex
+    w-full
+    flex-col
+    items-start
+    justify-between
+    gap-4
+    rounded-[22px] border
+    p-6
+    shadow-2xl
+    lg:flex-row
+    lg:items-center
+    lg:justify-between
+    lg:gap-4
+    lg:p-6
+  "
+    >
+      {/* Ícone */}
+      <div className="bg-muted-primary flex h-14 w-14 shrink-0 items-center justify-center rounded-lg">
+        <Goal className="text-primary h-[26.67px] w-[26.67px]" />
+      </div>
+
+      {/* HistoryInfos */}
+      <div className="flex flex-1 flex-col gap-6 lg:flex-row lg:justify-around lg:gap-6">
+        <HistoryInfos />
+        <HistoryInfos />
+        <HistoryInfos />
+        <HistoryInfos />
+      </div>
+
+      {/*Buttons*/}
+      <div className="flex w-full flex-col items-center lg:w-auto lg:shrink-0 lg:items-end">
+        <Divider orientation="horizontal" className={isMobile ? '' : 'hidden'} />
+        <div className="flex">
+          <Button variant="ghost">
+            <Trash2 className="text-red-600" />
+          </Button>
+          <Divider orientation="vertical" />
+          <Button variant="secondary">
+            <ExternalLink /> Ver detalhes
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default HistoryCard;
