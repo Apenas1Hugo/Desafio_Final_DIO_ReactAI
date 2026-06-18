@@ -1,3 +1,6 @@
+
+//Função para mostrar as informações do histórico, como o custo da meta, data, etc.
+
 export function HistoryInfos() {
   return (
     <div className="flex shrink-0 flex-col items-start pt-[0px]">

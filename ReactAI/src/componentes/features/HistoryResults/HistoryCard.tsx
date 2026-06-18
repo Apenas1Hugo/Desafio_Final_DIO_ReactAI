@@ -6,6 +6,8 @@ import { Divider } from '@/componentes/shared/Divider';
 
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
+
+{/* Função para mostrar o card do histórico, que inclui o ícone, as informações e os botões de ação. */}
 export function HistoryCard() {
   const isMobile = useMediaQuery('(max-width: 640px)');
 
@@ -34,15 +36,17 @@ export function HistoryCard() {
         <Goal className="text-primary h-[26.67px] w-[26.67px]" />
       </div>
 
-      {/* HistoryInfos */}
+      
       <div className="flex flex-1 flex-col gap-6 lg:flex-row lg:justify-around lg:gap-6">
-        <HistoryInfos />
+        {/* Data */}
+        <h3 className="text-muted-foreground mb-1 whitespace-nowrap text-sm pt-4">27/09/2004</h3>
         <HistoryInfos />
         <HistoryInfos />
         <HistoryInfos />
       </div>
 
       {/*Buttons*/}
+      {/* Para mostrar os botões de ação, como excluir o histórico ou ver detalhes. */}
       <div className="flex w-full flex-col items-center lg:w-auto lg:shrink-0 lg:items-end">
         <Divider orientation="horizontal" className={isMobile ? '' : 'hidden'} />
         <div className="flex">
