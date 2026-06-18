@@ -1,6 +1,7 @@
 import { Trash2, Goal, ExternalLink } from 'lucide-react';
 
 import { HistoryInfos } from './HistoryInfos';
+import { HistoryNameDate } from './HistoryNameDate';
 import { Button } from '@/componentes/shared/Button';
 import { Divider } from '@/componentes/shared/Divider';
 
@@ -38,11 +39,12 @@ export function HistoryCard() {
 
       
       <div className="flex flex-1 flex-col gap-6 lg:flex-row lg:justify-around lg:gap-6">
-        {/* Data */}
-        <h3 className="text-muted-foreground mb-1 whitespace-nowrap text-sm pt-4">27/09/2004</h3>
-        <HistoryInfos />
-        <HistoryInfos />
-        <HistoryInfos />
+        {/* Data e nome */}
+        <HistoryNameDate nomeMeta="Carro Novo" data="18/06/2026" />
+        {/* Informações do histórico */}
+        <HistoryInfos label="Custo da meta" value="R$ 15.000,00"/>
+        <HistoryInfos label="Prazo" value="12 Meses"/>
+        <HistoryInfos label="Economia mensal" value="R$ 1.250,00"/>
       </div>
 
       {/*Buttons*/}
