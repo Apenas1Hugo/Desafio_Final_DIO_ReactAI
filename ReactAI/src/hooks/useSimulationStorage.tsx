@@ -35,6 +35,13 @@ export const useSimulationStorage = () => {
 
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
   };
+  //Função para retornar todos os id's das simulações salvas no localStorage
+  const getAllSimulations = (): SimulationRecord[] => {
+    const storage = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (!storage) return [];
+    return JSON.parse(storage) as SimulationRecord[];
+  };
+
   // Retorna as funções para salvar, recuperar e atualizar os dados da simulação, permitindo que outros componentes usem esse hook para gerenciar o armazenamento dos dados da simulação
-  return { saveFormData, getFormData, updateSimulation };
+  return { saveFormData, getFormData, updateSimulation, getAllSimulations };
 };

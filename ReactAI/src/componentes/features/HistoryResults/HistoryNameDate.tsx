@@ -6,7 +6,7 @@ interface HistoryNameDateProps {
 
 export function HistoryNameDate({ nomeMeta, data }: HistoryNameDateProps) {
   return (
-    <div className="flex shrink-0 flex-col items-start pt-[0px]">
+    <div className="flex shrink-0 flex-col items-start ">
       <h2 className=" text-foreground text-xl font-semibold sm:text-xl">{nomeMeta}</h2>
        <p className=" text-muted-foreground mb-1 whitespace-nowrap text-sm">{data}</p>
     </div>
