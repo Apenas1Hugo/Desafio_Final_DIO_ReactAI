@@ -1,5 +1,6 @@
 import { PageHero } from '../componentes/shared/PageHero';
 import { HistoryCard } from '../componentes/features/HistoryResults/HistoryCard';
+import { TesteGetAll } from '../componentes/shared/TestGetAll';
 
 {/* Página para mostrar o histórico de simulações, onde os usuários podem acompanhar seus planos financeiros anteriores. */}
 export function SimulationHistoryPage() {
@@ -12,6 +13,8 @@ export function SimulationHistoryPage() {
       />
       {/* Para mostrar os cards de histórico, onde cada card representa uma simulação anterior, com informações como data, custo da meta, etc. */}
       <HistoryCard></HistoryCard>
+      
+      <TesteGetAll></TesteGetAll>
     </main>
   );
 }

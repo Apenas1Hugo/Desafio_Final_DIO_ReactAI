@@ -41,7 +41,15 @@ export const useSimulationStorage = () => {
     if (!storage) return [];
     return JSON.parse(storage) as SimulationRecord[];
   };
+  const deleteSimulation = (id: string) => {
+    const storage = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const savedData = storage ? (JSON.parse(storage) as SimulationRecord[]) : [];
+
+    const updated = savedData.filter((record) => record.id !== id);
+
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
+  };
 
   // Retorna as funções para salvar, recuperar e atualizar os dados da simulação, permitindo que outros componentes usem esse hook para gerenciar o armazenamento dos dados da simulação
-  return { saveFormData, getFormData, updateSimulation, getAllSimulations };
+  return { saveFormData, getFormData, updateSimulation, getAllSimulations, deleteSimulation };
 };
