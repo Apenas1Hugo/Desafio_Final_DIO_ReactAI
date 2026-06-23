@@ -1,18 +1,27 @@
 import { useEffect, useState } from 'react'
 import { useSimulationStorage } from '@/hooks/useSimulationStorage'
 import { type SimulationRecord } from '@/data/simulation'
+import { useNavigate } from 'react-router-dom';
 
+// Componente para testar a obtenção de todas as simulações
 export function TesteGetAll() {
   const { getAllSimulations, deleteSimulation } = useSimulationStorage()
   const [simulations, setSimulations] = useState<SimulationRecord[]>([])
+  const navigate = useNavigate();
 
+  // Carrega todas as simulações ao montar o componente
   useEffect(() => {
     setSimulations(getAllSimulations())
   }, [])
 
+
   const handleDelete = (id: string) => {
     deleteSimulation(id)
     setSimulations(getAllSimulations())
+  }
+  const handleNaviGate = (id: string) => {
+      void navigate(`/resultado/${id}`);
+      return;
   }
 
   return (
@@ -34,6 +43,12 @@ export function TesteGetAll() {
             className="mt-2 bg-red-500 text-white px-4 py-2 rounded-lg w-fit"
           >
             Deletar
+          </button>
+          <button
+            onClick={() => handleNaviGate(simulation.id)}
+            className="mt-2 bg-red-500 text-white px-4 py-2 rounded-lg w-fit"
+          >
+            Buscar Resultados
           </button>
         </div>
       ))}
