@@ -1,50 +1,55 @@
 import { Trash2, Goal, ExternalLink } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { type SimulationRecord } from '@/data/simulation';
 
 import { HistoryInfos } from './HistoryInfos';
 import { HistoryNameDate } from './HistoryNameDate';
+import { HistoryBox } from './HistoryBox';
 import { Button } from '@/componentes/shared/Button';
 import { Divider } from '@/componentes/shared/Divider';
 
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useSimulationStorage } from '@/hooks/useSimulationStorage';
 
 
-{/* Função para mostrar o card do histórico, que inclui o ícone, as informações e os botões de ação. */}
 export function HistoryCard() {
   const isMobile = useMediaQuery('(max-width: 640px)');
+  const { getAllSimulations, deleteSimulation } = useSimulationStorage();
+  const [simulations, setSimulations] = useState<SimulationRecord[]>([]);
+  const navigate = useNavigate();
+
+  // Carrega todas as simulações ao montar o componente
+  useEffect(() => {
+    setSimulations(getAllSimulations());
+  }, []);
+
+  const handleDelete = (id: string) => {
+    deleteSimulation(id);
+    setSimulations(getAllSimulations());
+  };
+  const handleNaviGate = (id: string) => {
+    void navigate(`/resultado/${id}`);
+    return;
+  };
 
   return (
-    <div
-      className="
-    border-border bg-card shadow-black-20
-    flex
-    w-full
-    flex-col
-    items-start
-    justify-between
-    gap-4
-    rounded-[22px] border
-    p-6
-    shadow-2xl
-    lg:flex-row
-    lg:items-center
-    lg:justify-between
-    lg:gap-4
-    lg:p-6
-  "
-    >
+
+    <HistoryBox>
+     
       {/* Ícone */}
       <div className="bg-muted-primary flex h-14 w-14 shrink-0 items-center justify-center rounded-lg">
         <Goal className="text-primary h-[26.67px] w-[26.67px]" />
       </div>
 
-      
       <div className="flex flex-1 flex-col gap-6 lg:flex-row lg:justify-around lg:gap-6">
         {/* Data e nome */}
         <HistoryNameDate nomeMeta="Carro Novo" data="18/06/2026" />
         {/* Informações do histórico */}
-        <HistoryInfos label="Custo da meta" value="R$ 15.000,00"/>
-        <HistoryInfos label="Prazo" value="12 Meses"/>
-        <HistoryInfos label="Economia mensal" value="R$ 1.250,00"/>
+        <HistoryInfos label="Custo da meta" value="R$ 15.000,00" />
+        <HistoryInfos label="Prazo" value="12 Meses" />
+        <HistoryInfos label="Economia mensal" value="R$ 1.250,00" />
       </div>
 
       {/*Buttons*/}
@@ -61,7 +66,7 @@ export function HistoryCard() {
           </Button>
         </div>
       </div>
-    </div>
+    </HistoryBox>
   );
 }
 
