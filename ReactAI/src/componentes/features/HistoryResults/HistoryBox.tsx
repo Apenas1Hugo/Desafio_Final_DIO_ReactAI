@@ -21,6 +21,7 @@ export function HistoryBox({ children }: HistoryBoxProps) {
         lg:justify-between
         lg:gap-4
         lg:p-6
+        mt-5
       "
     >
       {children}
