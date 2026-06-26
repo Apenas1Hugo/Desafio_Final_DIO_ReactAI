@@ -53,9 +53,9 @@ export function HistoryCard() {
         <HistoryNameDate nomeMeta={simulation.goalName} data="18/06/2026" />
         {/* Informações do histórico */}
 
-        <HistoryInfos label="Custo da meta" value="R$ 15.000,00" />
-        <HistoryInfos label="Prazo" value="12 Meses" />
-        <HistoryInfos label="Economia mensal" value="R$ 1.250,00" />
+        <HistoryInfos label="Custo da meta" value={simulation.goalAmount} />
+        <HistoryInfos label="Prazo" value={simulation.goalDeadline + " meses"} />
+        <HistoryInfos label="Economia mensal" value={"R$ "+ simulation.income} />
       </div>
 
       {/*Buttons*/}
@@ -64,11 +64,11 @@ export function HistoryCard() {
       <div className="flex w-full flex-col items-center lg:w-auto lg:shrink-0 lg:items-end">
         <Divider orientation="horizontal" className={isMobile ? '' : 'hidden'} />
         <div className="flex">
-          <Button variant="ghost">
+          <Button variant="ghost"   onClick={() => handleDelete(simulation.id)}>
             <Trash2 className="text-red-600" />
           </Button>
           <Divider orientation="vertical" />
-          <Button variant="secondary">
+          <Button variant="secondary" onClick={() => handleNaviGate(simulation.id)}>
             <ExternalLink /> Ver detalhes
           </Button>
         </div>
