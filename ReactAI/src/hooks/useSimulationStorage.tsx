@@ -1,4 +1,5 @@
 import { type SimulationFormData, type SimulationRecord } from '@/data/simulation'; // Importa os tipos de dados relacionados à simulação, como os dados do formulário e o formato do registro de simulação
+import{ dateNow } from '../utils/dateNow';
 
 const LOCAL_STORAGE_KEY = 'simulation-data'; // Define a chave que será usada para armazenar os dados da simulação no localStorage
 
@@ -6,7 +7,8 @@ export const useSimulationStorage = () => {
   // Função para salvar os dados do formulário de simulação no localStorage, gerando um ID único para cada simulação
   const saveFormData = (formData: SimulationFormData) => {
     const id = crypto.randomUUID();
-    const record: SimulationRecord = { ...formData, id };
+    const date = dateNow();
+    const record: SimulationRecord = { ...formData, id, date };
 
     const storage = localStorage.getItem(LOCAL_STORAGE_KEY);
     const savedData = storage ? (JSON.parse(storage) as SimulationRecord[]) : []; // Recupera os dados salvos anteriormente ou inicializa um array vazio se não houver dados

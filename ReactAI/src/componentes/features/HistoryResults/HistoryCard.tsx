@@ -50,7 +50,7 @@ export function HistoryCard() {
 
       <div className="flex flex-1 flex-col gap-6 lg:flex-row lg:justify-around lg:gap-6">
         {/* Data e nome */}
-        <HistoryNameDate nomeMeta={simulation.goalName} data="18/06/2026" />
+        <HistoryNameDate nomeMeta={simulation.goalName} data={simulation.date} />
         {/* Informações do histórico */}
 
         <HistoryInfos label="Custo da meta" value={simulation.goalAmount} />
