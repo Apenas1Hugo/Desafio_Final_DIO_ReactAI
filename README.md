@@ -42,15 +42,19 @@ Todos os dados são salvos no **localStorage** do navegador, permitindo que o us
 
 ## 📁 Estrutura das Pastas
 
+```
 src/
-├── componentes/
+├── 🧩 componentes/
 │   ├── features/       # Componentes específicos de funcionalidades
 │   ├── layout/         # Estrutura geral das páginas
 │   └── shared/         # Componentes reutilizáveis
-├── context/            # Contextos globais, como tema
-├── data/               # Dados estáticos e definições
-├── hooks/              # Hooks customizados
-├── pages/              # Páginas da aplicação
-├── services/           # Comunicação com APIs e serviços externos
-├── styles/             # Estilos e tema global
-└── utils/              # Funções auxiliares reutilizáveis
+│
+├── 🌐 context/         # Contextos globais, como tema
+├── 📦 data/            # Dados estáticos e definições
+├── 🪝 hooks/           # Hooks customizados
+├── 📄 pages/           # Páginas da aplicação
+├── 🔌 services/        # Comunicação com APIs e serviços externos
+├── 🎨 styles/          # Estilos e tema global
+└── 🛠️ utils/           # Funções auxiliares reutilizáveis
+```
+ 
